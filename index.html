@@ -487,11 +487,37 @@ window.CITTA_MONDO = window.CITTA_MONDO.concat([["San Marino",43.94,12.45,"San M
     .stats { grid-template-columns: repeat(2, 1fr); }
     .stat:nth-child(2) { border-right: 0; }
   }
+
+  @media (max-width: 640px) {
+    .topbar { flex-wrap: wrap; }
+    .brand { width: 100%; border-right: 0; border-bottom: 2px solid var(--color-text);
+      padding: var(--space-3) var(--space-4); font-size: 16px; }
+    .tabs { flex: 1; }
+    .tab { flex: 1; padding: var(--space-3) var(--space-2); text-align: center; font-size: 12px; }
+    .topmeta { width: 100%; margin-left: 0; border-top: 1px solid var(--color-neutral-300);
+      padding: var(--space-2) var(--space-4); justify-content: center; font-size: 11px; }
+
+    .stat { padding: var(--space-3) var(--space-4) var(--space-4); }
+    .stat .v { font-size: clamp(24px, 8vw, 34px); }
+
+    .mapwrap { min-height: 320px; }
+    .maphead { flex-wrap: wrap; gap: var(--space-2); padding: var(--space-3) var(--space-4); }
+    .legend { gap: var(--space-3); font-size: 10px; }
+    .zoomctl button { width: 40px; height: 38px; }
+
+    .block { padding: var(--space-3) var(--space-4) var(--space-4); }
+    .listhead { padding: var(--space-3) var(--space-4) var(--space-2); }
+    .item, .grouphead { padding-left: var(--space-4); padding-right: var(--space-4); }
+    .item.sub { padding-left: calc(var(--space-4) + var(--space-3)); }
+    .del { width: 34px; height: 34px; font-size: 18px; }
+    .row { gap: var(--space-2); }
+    .yr { width: 76px; }
+  }
 </style>
 </head>
 <body>
 
-<div class="shell">
+<div class="shell" style="overflow-x: hidden;">
   <header class="topbar">
     <div class="brand"><span class="mark"></span>Archivio viaggi</div>
     <div class="tabs" role="tablist">
