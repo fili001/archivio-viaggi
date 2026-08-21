@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="it"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Archivio viaggi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<style>/* Modernist — design-system tokens and component classes. This file is the source of truth for the system's look; retune it here and see readme.md. */
+
+
+:root {
+  --color-bg: #f3f2f2;
+  --color-surface: #eae9e9;
+  --color-text: #201e1d;
+  --color-accent: #ec3013;
+  --color-accent-2: #e15b47;
+  --color-divider: color-mix(in srgb, #201e1d 40%, transparent);
+
+  /* Tonal ramps — generated in OKLCH on one shared lightness scale, so the
+     same step of any role matches the others in visual value. */
+  --color-neutral-100: #f8f4f4;
+  --color-neutral-200: #eae7e7;
+  --color-neutral-300: #d7d3d3;
+  --color-neutral-400: #bab6b6;
+  --color-neutral-500: #9b9797;
+  --color-neutral-600: #7d7979;
+  --color-neutral-700: #605d5d;
+  --color-neutral-800: #444141;
+  --color-neutral-900: #2d2b2b;
+
+  --color-accent-100: #fff2ef;
+  --color-accent-200: #ffe0d9;
+  --color-accent-300: #ffc4b8;
+  --color-accent-400: #ff9783;
+  --color-accent-500: #ff563c;
+  --color-accent-600: #dd2b0f;
+  --color-accent-700: #ae1800;
+  --color-accent-800: #7c1405;
+  --color-accent-900: #4d170e;
+
+  --color-accent-2-100: #fff2ef;
+  --color-accent-2-200: #ffe0da;
+  --color-accent-2-300: #ffc4b9;
+  --color-accent-2-400: #ff9784;
+  --color-accent-2-500: #ef6853;
+  --color-accent-2-600: #c94b39;
+  --color-accent-2-700: #9e3526;
+  --color-accent-2-800: #71261b;
+  --color-accent-2-900: #471d16;
+
+  --font-heading: "Archivo", system-ui, sans-serif;
+  --font-heading-weight: 800;
+  --font-body: "Archivo", system-ui, sans-serif;
+
+  --space-1: 4.0px;
+  --space-2: 8.0px;
+  --space-3: 12.0px;
+  --space-4: 16.0px;
+  --space-6: 24.0px;
+  --space-8: 32.0px;
+
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+
+  /* Elevation — derived from the ground: soft ink-tinted shadows on a
+     light theme, a hairline edge + ambient darkness on a dark one. */
+  --shadow-sm: 0 1px 2px color-mix(in srgb, #2d2b2b 14%, transparent);
+  --shadow-md: 0 3px 10px color-mix(in srgb, #2d2b2b 16%, transparent);
+  --shadow-lg: 0 12px 32px color-mix(in srgb, #2d2b2b 22%, transparent);
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+}
+h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: var(--font-heading-weight); }
+
+.grayscale{filter:grayscale(1) contrast(1.08)}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   Components — built with the tokens above. Plain CSS
+   on plain HTML: no JavaScript, no build step. Each class is documented in
+   readme.md and demonstrated in foundations/ and components/.
+   ══════════════════════════════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; font-size: 15px; line-height: 1.55; font-weight: 400; }
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  line-height: 1.12; letter-spacing: -0.015em; margin: 0 0 var(--space-2);
+}
+h1 { font-size: 42px; }
+h2 { font-size: 32px; }
+h3 { font-size: 25px; }
+h4 { font-size: 20px; }
+h5 { font-size: 16px; }
+h6 { font-size: 13px; }
+h6 { letter-spacing: 0.08em; text-transform: uppercase; }
+p { margin: 0 0 var(--space-3); }
+a { color: var(--color-accent); text-underline-offset: 3px; }
+img { display: block; max-width: 100%; }
+figure { margin: 0; }
+figcaption {
+  font-size: 11px; margin-top: var(--space-1);
+  color: color-mix(in srgb, var(--color-text) 55%, transparent);
+}
+.text-muted { color: color-mix(in srgb, var(--color-text) 55%, transparent); }
+:focus { outline: none; }
+:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+::selection { background: color-mix(in srgb, var(--color-accent) 30%, transparent); }
+
+/* — rules — */
+.hr {
+  height: 2px; border: 0; margin: var(--space-4) 0;
+  background: var(--color-divider);
+}
+
+/* — buttons — */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  cursor: pointer; text-decoration: none;
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  font-size: 14px; line-height: 1.2; color: var(--color-text); /* matches the .input's 14px —
+     the pair sits side by side in sign-up rows */
+  background: transparent; border: 1px solid transparent;
+  padding: var(--space-2) calc(var(--space-3) * 1.2);
+  border-radius: var(--radius-md);
+}
+.btn svg { display: block; }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.btn-primary { background: var(--color-accent); color: var(--color-bg); }
+.btn-primary:hover { background: var(--color-accent-600); }
+.btn-primary:active { background: var(--color-accent-700); }
+.btn-secondary { border-color: var(--color-divider); }
+.btn-secondary:hover { background: color-mix(in srgb, var(--color-text) 7%, transparent); }
+.btn-secondary:active { background: color-mix(in srgb, var(--color-text) 14%, transparent); }
+.btn-ghost { color: var(--color-accent); padding-inline: var(--space-1); }
+.btn-ghost:hover { background: color-mix(in srgb, var(--color-accent) 10%, transparent); }
+.btn-ghost:active { background: color-mix(in srgb, var(--color-accent) 18%, transparent); }
+.btn-icon { width: 36px; height: 36px; padding: 0; }
+.btn-block { width: 100%; margin-top: var(--space-2); justify-content: flex-start; text-align: left; }
+
+/* — forms — */
+.field > label {
+  display: block; font-size: 12px; margin-bottom: 5px;
+  color: color-mix(in srgb, var(--color-text) 70%, transparent);
+}
+.input {
+  width: 100%; min-height: 36px; padding: 6px 10px; font: inherit;
+  font-size: 14px; color: var(--color-text); caret-color: var(--color-accent);
+  background: var(--color-surface);
+  border: 1px solid var(--color-divider); border-radius: var(--radius-md);
+}
+.input:hover { border-color: color-mix(in srgb, var(--color-text) 45%, transparent); }
+.input:focus-visible { border-color: var(--color-accent); outline-offset: 0; }
+textarea.input { min-height: 90px; resize: vertical; }
+.radio { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-size: 14px; }
+.radio input, .seg-opt input {
+  position: absolute; opacity: 0; width: 0; height: 0; pointer-events: none;
+}
+.radio .dot {
+  width: 16px; height: 16px; flex: none; border-radius: 50%;
+  border: 1.5px solid var(--color-divider);
+}
+.radio:hover .dot { border-color: var(--color-accent); }
+.radio input:checked + .dot {
+  border-color: var(--color-accent); background: var(--color-accent);
+  box-shadow: inset 0 0 0 4px var(--color-bg);
+}
+.radio input:focus-visible + .dot { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+.seg {
+  display: inline-flex; overflow: hidden;
+  border: 1px solid var(--color-divider); border-radius: var(--radius-md);
+}
+.seg-opt {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 12px; font-size: 13px; cursor: pointer;
+}
+.seg-opt + .seg-opt { border-left: 1px solid var(--color-divider); }
+.seg-opt:has(input:checked) { background: var(--color-accent); color: var(--color-bg); }
+.seg-opt:not(:has(input:checked)):hover { background: color-mix(in srgb, var(--color-text) 7%, transparent); }
+.seg-opt:has(input:focus-visible) { outline: 2px solid var(--color-accent); outline-offset: -2px; }
+
+/* — cards — */
+.card {
+  display: flex; flex-direction: column; gap: var(--space-2);
+  padding: var(--space-3); border-radius: var(--radius-md); background: var(--color-surface);
+}
+.card-kicker { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent); }
+.card-title {
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  font-size: 17px; line-height: 1.2;
+}
+.card-body { margin: 0; font-size: 13px; opacity: 0.8; flex: 1; }
+.card-meta {
+  display: flex; align-items: center; gap: 6px; font-size: 11px;
+  color: color-mix(in srgb, var(--color-text) 50%, transparent);
+}
+.elev-sm { box-shadow: var(--shadow-sm); }
+.elev-md { box-shadow: var(--shadow-md); }
+.elev-lg { box-shadow: var(--shadow-lg); }
+
+/* — tags — */
+.tag {
+  display: inline-flex; align-items: center; font-size: 11px;
+  letter-spacing: 0.02em; padding: 3px 10px;
+  border-radius: calc(var(--radius-md) * 0.75);
+}
+.tag-accent { background: var(--color-accent-100); color: var(--color-accent-800); }
+.tag-accent-2 { background: var(--color-accent-2-100); color: var(--color-accent-2-800); }
+.tag-neutral { background: var(--color-neutral-100); color: var(--color-neutral-800); }
+.tag-outline { border: 1px solid var(--color-accent); color: var(--color-accent); }
+
+/* — navigation — */
+.nav {
+  display: flex; align-items: center; gap: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 2px solid var(--color-divider);
+}
+.nav-brand {
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  font-size: 18px; margin-right: auto;
+}
+.nav a { color: inherit; text-decoration: none; font-size: 14px; }
+.nav a:hover, .nav a[aria-current='page'] { color: var(--color-accent); }
+
+/* — tables — */
+.table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.table th {
+  text-align: left; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-text) 60%, transparent);
+  padding: var(--space-2); border-bottom: 2px solid var(--color-divider);
+}
+.table td {
+  padding: var(--space-2);
+  border-bottom: 1px solid var(--color-divider);
+}
+.table tbody tr:hover { background: color-mix(in srgb, var(--color-text) 4%, transparent); }
+
+/* — dialog — */
+.dialog-backdrop {
+  position: fixed; inset: 0; display: grid; place-items: center;
+  padding: var(--space-4);
+  background: color-mix(in srgb, var(--color-neutral-900) 50%, transparent);
+}
+.dialog {
+  width: min(440px, 100%); display: flex; flex-direction: column; gap: var(--space-3);
+  padding: var(--space-4); border-radius: var(--radius-lg);
+  background: var(--color-surface); box-shadow: var(--shadow-lg);
+}
+.dialog-title {
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  font-size: 20px;
+}
+.dialog-body { font-size: 14px; opacity: 0.85; }
+.dialog-actions { display: flex; justify-content: flex-end; gap: var(--space-2); margin-top: var(--space-2); }
+
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
+<script>
+// Dizionari e liste di riferimento per la dashboard viaggi.
+window.IT_PAESI = {
+"Afghanistan":"Afghanistan","Albania":"Albania","Algeria":"Algeria","Angola":"Angola","Argentina":"Argentina","Armenia":"Armenia","Australia":"Australia","Austria":"Austria","Azerbaijan":"Azerbaigian","Bahamas":"Bahamas","Bangladesh":"Bangladesh","Belarus":"Bielorussia","Belgium":"Belgio","Belize":"Belize","Benin":"Benin","Bhutan":"Bhutan","Bolivia":"Bolivia","Bosnia and Herz.":"Bosnia ed Erzegovina","Botswana":"Botswana","Brazil":"Brasile","Brunei":"Brunei","Bulgaria":"Bulgaria","Burkina Faso":"Burkina Faso","Burundi":"Burundi","Cambodia":"Cambogia","Cameroon":"Camerun","Canada":"Canada","Central African Rep.":"Rep. Centrafricana","Chad":"Ciad","Chile":"Cile","China":"Cina","Colombia":"Colombia","Congo":"Congo","Costa Rica":"Costa Rica","Côte d'Ivoire":"Costa d'Avorio","Croatia":"Croazia","Cuba":"Cuba","Cyprus":"Cipro","Czechia":"Rep. Ceca","Dem. Rep. Congo":"Rep. Dem. del Congo","Denmark":"Danimarca","Djibouti":"Gibuti","Dominican Rep.":"Rep. Dominicana","Ecuador":"Ecuador","Egypt":"Egitto","El Salvador":"El Salvador","Eq. Guinea":"Guinea Equatoriale","Eritrea":"Eritrea","Estonia":"Estonia","eSwatini":"Eswatini","Ethiopia":"Etiopia","Falkland Is.":"Isole Falkland","Fiji":"Figi","Finland":"Finlandia","France":"Francia","Gabon":"Gabon","Gambia":"Gambia","Georgia":"Georgia","Germany":"Germania","Ghana":"Ghana","Greece":"Grecia","Greenland":"Groenlandia","Guatemala":"Guatemala","Guinea":"Guinea","Guinea-Bissau":"Guinea-Bissau","Guyana":"Guyana","Haiti":"Haiti","Honduras":"Honduras","Hungary":"Ungheria","Iceland":"Islanda","India":"India","Indonesia":"Indonesia","Iran":"Iran","Iraq":"Iraq","Ireland":"Irlanda","Israel":"Israele","Italy":"Italia","Jamaica":"Giamaica","Japan":"Giappone","Jordan":"Giordania","Kazakhstan":"Kazakistan","Kenya":"Kenya","Kosovo":"Kosovo","Kuwait":"Kuwait","Kyrgyzstan":"Kirghizistan","Laos":"Laos","Latvia":"Lettonia","Lebanon":"Libano","Lesotho":"Lesotho","Liberia":"Liberia","Libya":"Libia","Lithuania":"Lituania","Luxembourg":"Lussemburgo","Madagascar":"Madagascar","Malawi":"Malawi","Malaysia":"Malesia","Mali":"Mali","Malta":"Malta","Mauritania":"Mauritania","Mexico":"Messico","Moldova":"Moldavia","Mongolia":"Mongolia","Montenegro":"Montenegro","Morocco":"Marocco","Mozambique":"Mozambico","Myanmar":"Myanmar","Namibia":"Namibia","Nepal":"Nepal","Netherlands":"Paesi Bassi","New Caledonia":"Nuova Caledonia","New Zealand":"Nuova Zelanda","Nicaragua":"Nicaragua","Niger":"Niger","Nigeria":"Nigeria","North Korea":"Corea del Nord","North Macedonia":"Macedonia del Nord","Norway":"Norvegia","Oman":"Oman","Pakistan":"Pakistan","Palestine":"Palestina","Panama":"Panama","Papua New Guinea":"Papua Nuova Guinea","Paraguay":"Paraguay","Peru":"Perù","Philippines":"Filippine","Poland":"Polonia","Portugal":"Portogallo","Puerto Rico":"Porto Rico","Qatar":"Qatar","Romania":"Romania","Russia":"Russia","Rwanda":"Ruanda","Saudi Arabia":"Arabia Saudita","Senegal":"Senegal","Serbia":"Serbia","Sierra Leone":"Sierra Leone","Slovakia":"Slovacchia","Slovenia":"Slovenia","Solomon Is.":"Isole Salomone","Somalia":"Somalia","South Africa":"Sudafrica","South Korea":"Corea del Sud","S. Sudan":"Sud Sudan","Spain":"Spagna","Sri Lanka":"Sri Lanka","Sudan":"Sudan","Suriname":"Suriname","Sweden":"Svezia","Switzerland":"Svizzera","Syria":"Siria","Taiwan":"Taiwan","Tajikistan":"Tagikistan","Tanzania":"Tanzania","Thailand":"Thailandia","Timor-Leste":"Timor Est","Togo":"Togo","Trinidad and Tobago":"Trinidad e Tobago","Tunisia":"Tunisia","Turkey":"Turchia","Turkmenistan":"Turkmenistan","Uganda":"Uganda","Ukraine":"Ucraina","United Arab Emirates":"Emirati Arabi Uniti","United Kingdom":"Regno Unito","United States of America":"Stati Uniti","Uruguay":"Uruguay","Uzbekistan":"Uzbekistan","Vanuatu":"Vanuatu","Venezuela":"Venezuela","Vietnam":"Vietnam","W. Sahara":"Sahara Occidentale","Yemen":"Yemen","Zambia":"Zambia","Zimbabwe":"Zimbabwe","Antarctica":"Antartide","Fr. S. Antarctic Lands":"Terre Australi Francesi"
+};
+
+window.REGIONI = ["Abruzzo","Basilicata","Calabria","Campania","Emilia-Romagna","Friuli-Venezia Giulia","Lazio","Liguria","Lombardia","Marche","Molise","Piemonte","Puglia","Sardegna","Sicilia","Toscana","Trentino-Alto Adige","Umbria","Valle d'Aosta","Veneto"];
+
+// [nome, lat, lon, paese]
+window.CITTA_MONDO = [
+["Parigi",48.86,2.35,"Francia"],["Lione",45.76,4.84,"Francia"],["Nizza",43.70,7.27,"Francia"],["Marsiglia",43.30,5.37,"Francia"],["Bordeaux",44.84,-0.58,"Francia"],
+["Londra",51.51,-0.13,"Regno Unito"],["Edimburgo",55.95,-3.19,"Regno Unito"],["Manchester",53.48,-2.24,"Regno Unito"],["Dublino",53.35,-6.26,"Irlanda"],
+["Amsterdam",52.37,4.90,"Paesi Bassi"],["Bruxelles",50.85,4.35,"Belgio"],["Bruges",51.21,3.22,"Belgio"],
+["Berlino",52.52,13.40,"Germania"],["Monaco di Baviera",48.14,11.58,"Germania"],["Amburgo",53.55,9.99,"Germania"],["Colonia",50.94,6.96,"Germania"],
+["Vienna",48.21,16.37,"Austria"],["Salisburgo",47.80,13.04,"Austria"],["Innsbruck",47.27,11.39,"Austria"],
+["Praga",50.08,14.44,"Rep. Ceca"],["Budapest",47.50,19.04,"Ungheria"],["Cracovia",50.06,19.94,"Polonia"],["Varsavia",52.23,21.01,"Polonia"],
+["Zurigo",47.38,8.54,"Svizzera"],["Ginevra",46.20,6.14,"Svizzera"],["Lucerna",47.05,8.31,"Svizzera"],["Zermatt",46.02,7.75,"Svizzera"],
+["Madrid",40.42,-3.70,"Spagna"],["Barcellona",41.39,2.17,"Spagna"],["Siviglia",37.39,-5.99,"Spagna"],["Valencia",39.47,-0.38,"Spagna"],["Granada",37.18,-3.60,"Spagna"],["Palma di Maiorca",39.57,2.65,"Spagna"],["Ibiza",38.91,1.43,"Spagna"],
+["Lisbona",38.72,-9.14,"Portogallo"],["Porto",41.15,-8.61,"Portogallo"],["Madeira",32.65,-16.91,"Portogallo"],
+["Atene",37.98,23.73,"Grecia"],["Santorini",36.39,25.46,"Grecia"],["Mykonos",37.45,25.33,"Grecia"],["Creta",35.34,25.13,"Grecia"],["Corfù",39.62,19.92,"Grecia"],
+["Istanbul",41.01,28.98,"Turchia"],["Cappadocia",38.65,34.83,"Turchia"],
+["Copenaghen",55.68,12.57,"Danimarca"],["Stoccolma",59.33,18.07,"Svezia"],["Oslo",59.91,10.75,"Norvegia"],["Bergen",60.39,5.32,"Norvegia"],["Tromsø",69.65,18.96,"Norvegia"],["Helsinki",60.17,24.94,"Finlandia"],["Reykjavík",64.15,-21.94,"Islanda"],
+["Zagabria",45.81,15.98,"Croazia"],["Dubrovnik",42.65,18.09,"Croazia"],["Spalato",43.51,16.44,"Croazia"],["Lubiana",46.06,14.51,"Slovenia"],["Belgrado",44.79,20.45,"Serbia"],["Bucarest",44.43,26.10,"Romania"],["Sofia",42.70,23.32,"Bulgaria"],["Tirana",41.33,19.82,"Albania"],["La Valletta",35.90,14.51,"Malta"],
+["Mosca",55.76,37.62,"Russia"],["San Pietroburgo",59.93,30.34,"Russia"],["Kiev",50.45,30.52,"Ucraina"],
+["New York",40.71,-74.01,"Stati Uniti"],["Los Angeles",34.05,-118.24,"Stati Uniti"],["San Francisco",37.77,-122.42,"Stati Uniti"],["Chicago",41.88,-87.63,"Stati Uniti"],["Miami",25.76,-80.19,"Stati Uniti"],["Las Vegas",36.17,-115.14,"Stati Uniti"],["Washington",38.91,-77.04,"Stati Uniti"],["Boston",42.36,-71.06,"Stati Uniti"],["Seattle",47.61,-122.33,"Stati Uniti"],["New Orleans",29.95,-90.07,"Stati Uniti"],["Honolulu",21.31,-157.86,"Stati Uniti"],
+["Toronto",43.65,-79.38,"Canada"],["Vancouver",49.28,-123.12,"Canada"],["Montréal",45.50,-73.57,"Canada"],
+["Città del Messico",19.43,-99.13,"Messico"],["Cancún",21.16,-86.85,"Messico"],["Oaxaca",17.07,-96.72,"Messico"],["L'Avana",23.11,-82.37,"Cuba"],["San José",9.93,-84.08,"Costa Rica"],["Panamá",8.98,-79.52,"Panama"],
+["Rio de Janeiro",-22.91,-43.17,"Brasile"],["São Paulo",-23.55,-46.63,"Brasile"],["Salvador",-12.97,-38.50,"Brasile"],["Buenos Aires",-34.60,-58.38,"Argentina"],["Bariloche",-41.13,-71.31,"Argentina"],["Santiago del Cile",-33.45,-70.67,"Cile"],["Patagonia",-50.94,-73.41,"Cile"],["Lima",-12.05,-77.04,"Perù"],["Cusco",-13.53,-71.97,"Perù"],["Machu Picchu",-13.16,-72.55,"Perù"],["La Paz",-16.50,-68.15,"Bolivia"],["Bogotá",4.71,-74.07,"Colombia"],["Cartagena",10.39,-75.51,"Colombia"],["Quito",-0.18,-78.47,"Ecuador"],["Galápagos",-0.74,-90.32,"Ecuador"],["Montevideo",-34.90,-56.16,"Uruguay"],
+["Marrakech",31.63,-8.01,"Marocco"],["Fès",34.03,-5.00,"Marocco"],["Casablanca",33.57,-7.59,"Marocco"],["Il Cairo",30.04,31.24,"Egitto"],["Luxor",25.69,32.64,"Egitto"],["Sharm el-Sheikh",27.92,34.33,"Egitto"],["Tunisi",36.81,10.18,"Tunisia"],
+["Città del Capo",-33.92,18.42,"Sudafrica"],["Johannesburg",-26.20,28.05,"Sudafrica"],["Nairobi",-1.29,36.82,"Kenya"],["Zanzibar",-6.16,39.19,"Tanzania"],["Addis Abeba",9.02,38.75,"Etiopia"],["Dakar",14.72,-17.47,"Senegal"],["Mauritius",-20.35,57.55,"Mauritius"],
+["Dubai",25.20,55.27,"Emirati Arabi Uniti"],["Abu Dhabi",24.45,54.38,"Emirati Arabi Uniti"],["Doha",25.29,51.53,"Qatar"],["Tel Aviv",32.08,34.78,"Israele"],["Gerusalemme",31.78,35.22,"Israele"],["Amman",31.95,35.93,"Giordania"],["Petra",30.33,35.44,"Giordania"],["Beirut",33.89,35.50,"Libano"],
+["Tokyo",35.68,139.65,"Giappone"],["Kyoto",35.01,135.77,"Giappone"],["Osaka",34.69,135.50,"Giappone"],["Hiroshima",34.39,132.46,"Giappone"],["Seoul",37.57,126.98,"Corea del Sud"],["Pechino",39.90,116.41,"Cina"],["Shanghai",31.23,121.47,"Cina"],["Hong Kong",22.32,114.17,"Cina"],["Taipei",25.03,121.57,"Taiwan"],
+["Bangkok",13.76,100.50,"Thailandia"],["Chiang Mai",18.79,98.99,"Thailandia"],["Phuket",7.88,98.39,"Thailandia"],["Hanoi",21.03,105.85,"Vietnam"],["Ho Chi Minh",10.82,106.63,"Vietnam"],["Siem Reap",13.36,103.86,"Cambogia"],["Singapore",1.35,103.82,"Singapore"],["Kuala Lumpur",3.14,101.69,"Malesia"],["Bali",-8.41,115.19,"Indonesia"],["Jakarta",-6.21,106.85,"Indonesia"],["Manila",14.60,120.98,"Filippine"],
+["Delhi",28.61,77.21,"India"],["Mumbai",19.08,72.88,"India"],["Jaipur",26.91,75.79,"India"],["Goa",15.30,74.12,"India"],["Kathmandu",27.72,85.32,"Nepal"],["Colombo",6.93,79.86,"Sri Lanka"],["Malé",4.18,73.51,"Maldive"],
+["Sydney",-33.87,151.21,"Australia"],["Melbourne",-37.81,144.96,"Australia"],["Auckland",-36.85,174.76,"Nuova Zelanda"],["Queenstown",-45.03,168.66,"Nuova Zelanda"],["Papeete",-17.54,-149.57,"Polinesia Francese"]
+];
+
+// [nome, lat, lon, regione]
+window.CITTA_ITALIA = [
+["Torino",45.07,7.69,"Piemonte"],["Cuneo",44.39,7.55,"Piemonte"],["Alba",44.70,8.03,"Piemonte"],["Lago Maggiore",45.90,8.55,"Piemonte"],
+["Aosta",45.74,7.32,"Valle d'Aosta"],["Courmayeur",45.79,6.97,"Valle d'Aosta"],
+["Milano",45.46,9.19,"Lombardia"],["Bergamo",45.69,9.67,"Lombardia"],["Como",45.81,9.09,"Lombardia"],["Brescia",45.54,10.22,"Lombardia"],["Mantova",45.16,10.79,"Lombardia"],
+["Trento",46.07,11.12,"Trentino-Alto Adige"],["Bolzano",46.50,11.35,"Trentino-Alto Adige"],["Ortisei",46.58,11.67,"Trentino-Alto Adige"],["Madonna di Campiglio",46.23,10.83,"Trentino-Alto Adige"],
+["Venezia",45.44,12.33,"Veneto"],["Verona",45.44,10.99,"Veneto"],["Padova",45.41,11.88,"Veneto"],["Cortina d'Ampezzo",46.54,12.14,"Veneto"],["Vicenza",45.55,11.55,"Veneto"],
+["Trieste",45.65,13.78,"Friuli-Venezia Giulia"],["Udine",46.06,13.24,"Friuli-Venezia Giulia"],["Grado",45.68,13.39,"Friuli-Venezia Giulia"],
+["Genova",44.41,8.93,"Liguria"],["Portofino",44.30,9.21,"Liguria"],["Cinque Terre",44.13,9.71,"Liguria"],["Sanremo",43.82,7.78,"Liguria"],
+["Bologna",44.49,11.34,"Emilia-Romagna"],["Parma",44.80,10.33,"Emilia-Romagna"],["Modena",44.65,10.93,"Emilia-Romagna"],["Rimini",44.06,12.57,"Emilia-Romagna"],["Ravenna",44.42,12.20,"Emilia-Romagna"],
+["Firenze",43.77,11.26,"Toscana"],["Siena",43.32,11.33,"Toscana"],["Pisa",43.72,10.40,"Toscana"],["Lucca",43.84,10.50,"Toscana"],["Arezzo",43.46,11.88,"Toscana"],["Isola d'Elba",42.78,10.29,"Toscana"],["Val d'Orcia",43.05,11.62,"Toscana"],
+["Perugia",43.11,12.39,"Umbria"],["Assisi",43.07,12.62,"Umbria"],["Orvieto",42.72,12.11,"Umbria"],
+["Ancona",43.62,13.51,"Marche"],["Urbino",43.73,12.64,"Marche"],["Conero",43.55,13.60,"Marche"],
+["Roma",41.90,12.50,"Lazio"],["Tivoli",41.96,12.80,"Lazio"],["Viterbo",42.42,12.11,"Lazio"],["Sperlonga",41.26,13.43,"Lazio"],
+["L'Aquila",42.35,13.40,"Abruzzo"],["Pescara",42.46,14.21,"Abruzzo"],["Sulmona",42.05,13.93,"Abruzzo"],
+["Campobasso",41.56,14.66,"Molise"],["Termoli",42.00,14.99,"Molise"],
+["Napoli",40.85,14.27,"Campania"],["Pompei",40.75,14.50,"Campania"],["Amalfi",40.63,14.60,"Campania"],["Capri",40.55,14.24,"Campania"],["Salerno",40.68,14.77,"Campania"],["Ischia",40.73,13.90,"Campania"],
+["Bari",41.13,16.87,"Puglia"],["Lecce",40.35,18.17,"Puglia"],["Alberobello",40.79,17.24,"Puglia"],["Polignano a Mare",40.99,17.22,"Puglia"],["Gallipoli",40.06,17.99,"Puglia"],["Otranto",40.15,18.49,"Puglia"],
+["Matera",40.67,16.61,"Basilicata"],["Maratea",39.99,15.72,"Basilicata"],
+["Reggio Calabria",38.11,15.65,"Calabria"],["Tropea",38.68,15.90,"Calabria"],["Cosenza",39.30,16.25,"Calabria"],
+["Palermo",38.12,13.36,"Sicilia"],["Catania",37.51,15.09,"Sicilia"],["Taormina",37.85,15.29,"Sicilia"],["Siracusa",37.08,15.29,"Sicilia"],["Agrigento",37.31,13.58,"Sicilia"],["Cefalù",38.04,14.02,"Sicilia"],["Favignana",37.93,12.33,"Sicilia"],
+["Cagliari",39.22,9.12,"Sardegna"],["Alghero",40.56,8.32,"Sardegna"],["Olbia",40.92,9.50,"Sardegna"],["Villasimius",39.14,9.52,"Sardegna"],["Costa Smeralda",41.10,9.53,"Sardegna"]
+];
+
+// Integrazione: capoluoghi di provincia, località di mare e stazioni di montagna
+window.CITTA_ITALIA = window.CITTA_ITALIA.concat([
+["Asti",44.90,8.21,"Piemonte"],["Alessandria",44.91,8.62,"Piemonte"],["Biella",45.57,8.05,"Piemonte"],["Novara",45.45,8.62,"Piemonte"],["Vercelli",45.32,8.42,"Piemonte"],["Verbania",45.92,8.55,"Piemonte"],["Claviere",44.94,6.75,"Piemonte"],["Sestriere",44.96,6.88,"Piemonte"],["Bardonecchia",45.08,6.70,"Piemonte"],["Sauze d'Oulx",45.03,6.86,"Piemonte"],["Canelli",44.72,8.29,"Piemonte"],["Acqui Terme",44.68,8.47,"Piemonte"],["Stresa",45.88,8.53,"Piemonte"],["Ivrea",45.47,7.88,"Piemonte"],["Barolo",44.61,7.94,"Piemonte"],["Langhe",44.63,8.03,"Piemonte"],
+["Cervinia",45.94,7.63,"Valle d'Aosta"],["Cogne",45.61,7.36,"Valle d'Aosta"],["La Thuile",45.71,6.95,"Valle d'Aosta"],["Gressoney",45.78,7.83,"Valle d'Aosta"],["Gran Paradiso",45.52,7.27,"Valle d'Aosta"],
+["Pavia",45.19,9.16,"Lombardia"],["Cremona",45.13,10.02,"Lombardia"],["Lodi",45.31,9.50,"Lombardia"],["Varese",45.82,8.83,"Lombardia"],["Sondrio",46.17,9.87,"Lombardia"],["Lecco",45.86,9.39,"Lombardia"],["Monza",45.58,9.27,"Lombardia"],["Bormio",46.47,10.37,"Lombardia"],["Livigno",46.54,10.14,"Lombardia"],["Aprica",46.15,10.15,"Lombardia"],["Ponte di Legno",46.26,10.51,"Lombardia"],["Sirmione",45.49,10.61,"Lombardia"],["Bellagio",45.98,9.26,"Lombardia"],["Franciacorta",45.60,10.05,"Lombardia"],
+["Merano",46.67,11.16,"Trentino-Alto Adige"],["Bressanone",46.72,11.66,"Trentino-Alto Adige"],["Brunico",46.80,11.94,"Trentino-Alto Adige"],["Canazei",46.48,11.77,"Trentino-Alto Adige"],["Moena",46.38,11.66,"Trentino-Alto Adige"],["Val Gardena",46.56,11.68,"Trentino-Alto Adige"],["Val di Fassa",46.43,11.72,"Trentino-Alto Adige"],["Riva del Garda",45.89,10.84,"Trentino-Alto Adige"],["Pinzolo",46.16,10.76,"Trentino-Alto Adige"],["Lago di Braies",46.69,12.09,"Trentino-Alto Adige"],
+["Belluno",46.14,12.22,"Veneto"],["Rovigo",45.07,11.79,"Veneto"],["Treviso",45.67,12.24,"Veneto"],["Lido di Jesolo",45.51,12.63,"Veneto"],["Asiago",45.87,11.51,"Veneto"],["Bassano del Grappa",45.77,11.73,"Veneto"],["Chioggia",45.22,12.28,"Veneto"],["Valpolicella",45.51,10.90,"Veneto"],
+["Pordenone",45.96,12.66,"Friuli-Venezia Giulia"],["Gorizia",45.94,13.62,"Friuli-Venezia Giulia"],["Lignano Sabbiadoro",45.68,13.13,"Friuli-Venezia Giulia"],["Tarvisio",46.51,13.58,"Friuli-Venezia Giulia"],["Cividale del Friuli",46.09,13.43,"Friuli-Venezia Giulia"],
+["La Spezia",44.11,9.83,"Liguria"],["Savona",44.31,8.48,"Liguria"],["Imperia",43.89,8.03,"Liguria"],["Alassio",44.01,8.17,"Liguria"],["Rapallo",44.35,9.23,"Liguria"],["Lerici",44.08,9.91,"Liguria"],["Camogli",44.35,9.15,"Liguria"],["Santa Margherita Ligure",44.33,9.21,"Liguria"],
+["Ferrara",44.84,11.62,"Emilia-Romagna"],["Forlì",44.22,12.04,"Emilia-Romagna"],["Cesena",44.14,12.24,"Emilia-Romagna"],["Piacenza",45.05,9.69,"Emilia-Romagna"],["Reggio Emilia",44.70,10.63,"Emilia-Romagna"],["Cesenatico",44.20,12.40,"Emilia-Romagna"],["Riccione",43.99,12.66,"Emilia-Romagna"],["Comacchio",44.69,12.18,"Emilia-Romagna"],
+["Livorno",43.55,10.31,"Toscana"],["Grosseto",42.76,11.11,"Toscana"],["Massa",44.04,10.14,"Toscana"],["Prato",43.88,11.10,"Toscana"],["Pistoia",43.93,10.92,"Toscana"],["Viareggio",43.87,10.24,"Toscana"],["San Gimignano",43.47,11.04,"Toscana"],["Forte dei Marmi",43.96,10.17,"Toscana"],["Cortona",43.27,11.99,"Toscana"],["Volterra",43.40,10.86,"Toscana"],["Argentario",42.42,11.13,"Toscana"],["Chianti",43.47,11.30,"Toscana"],["Abetone",44.14,10.66,"Toscana"],["Isola del Giglio",42.36,10.90,"Toscana"],
+["Terni",42.56,12.65,"Umbria"],["Gubbio",43.35,12.58,"Umbria"],["Spoleto",42.74,12.74,"Umbria"],["Cascia",42.72,13.01,"Umbria"],["Norcia",42.79,13.09,"Umbria"],["Todi",42.78,12.41,"Umbria"],["Lago Trasimeno",43.13,12.10,"Umbria"],
+["Pesaro",43.91,12.91,"Marche"],["Macerata",43.30,13.45,"Marche"],["Fermo",43.16,13.72,"Marche"],["Ascoli Piceno",42.85,13.58,"Marche"],["Senigallia",43.71,13.22,"Marche"],["Sirolo",43.53,13.62,"Marche"],["Fano",43.84,13.02,"Marche"],["Gradara",43.94,12.77,"Marche"],
+["Latina",41.47,12.90,"Lazio"],["Frosinone",41.64,13.34,"Lazio"],["Rieti",42.40,12.86,"Lazio"],["Anzio",41.45,12.62,"Lazio"],["Ostia",41.73,12.28,"Lazio"],["Lago di Bracciano",42.10,12.18,"Lazio"],["Ponza",40.90,12.96,"Lazio"],["Gaeta",41.21,13.57,"Lazio"],["Civitavecchia",42.09,11.79,"Lazio"],["Terracina",41.28,13.24,"Lazio"],
+["Teramo",42.66,13.70,"Abruzzo"],["Chieti",42.35,14.17,"Abruzzo"],["Roccaraso",41.85,14.08,"Abruzzo"],["Vasto",42.11,14.71,"Abruzzo"],["Ovindoli",42.14,13.51,"Abruzzo"],["Gran Sasso",42.47,13.56,"Abruzzo"],["Scanno",41.90,13.88,"Abruzzo"],["Pescasseroli",41.80,13.79,"Abruzzo"],
+["Isernia",41.60,14.23,"Molise"],["Agnone",41.81,14.38,"Molise"],
+["Avellino",40.91,14.79,"Campania"],["Benevento",41.13,14.78,"Campania"],["Caserta",41.07,14.33,"Campania"],["Sorrento",40.63,14.37,"Campania"],["Positano",40.63,14.48,"Campania"],["Ravello",40.65,14.61,"Campania"],["Procida",40.76,14.02,"Campania"],["Paestum",40.42,15.01,"Campania"],["Cilento",40.20,15.20,"Campania"],["Vietri sul Mare",40.67,14.73,"Campania"],
+["Foggia",41.46,15.55,"Puglia"],["Taranto",40.47,17.24,"Puglia"],["Brindisi",40.63,17.94,"Puglia"],["Barletta",41.31,16.28,"Puglia"],["Andria",41.23,16.30,"Puglia"],["Trani",41.28,16.42,"Puglia"],["Monopoli",40.95,17.30,"Puglia"],["Ostuni",40.73,17.58,"Puglia"],["Vieste",41.88,16.18,"Puglia"],["Gargano",41.79,15.95,"Puglia"],["Santa Maria di Leuca",39.80,18.36,"Puglia"],["Martina Franca",40.70,17.34,"Puglia"],
+["Potenza",40.64,15.81,"Basilicata"],["Metaponto",40.38,16.81,"Basilicata"],["Craco",40.38,16.44,"Basilicata"],
+["Catanzaro",38.91,16.59,"Calabria"],["Crotone",39.08,17.13,"Calabria"],["Vibo Valentia",38.68,16.10,"Calabria"],["Scilla",38.25,15.72,"Calabria"],["Capo Vaticano",38.62,15.83,"Calabria"],["Sila",39.20,16.55,"Calabria"],["Le Castella",38.91,17.02,"Calabria"],
+["Messina",38.19,15.55,"Sicilia"],["Trapani",38.02,12.51,"Sicilia"],["Ragusa",36.93,14.73,"Sicilia"],["Enna",37.57,14.28,"Sicilia"],["Caltanissetta",37.49,14.06,"Sicilia"],["Noto",36.89,15.07,"Sicilia"],["Modica",36.86,14.77,"Sicilia"],["Erice",38.04,12.59,"Sicilia"],["Lipari",38.47,14.95,"Sicilia"],["Stromboli",38.79,15.21,"Sicilia"],["Etna",37.75,14.99,"Sicilia"],["San Vito Lo Capo",38.17,12.74,"Sicilia"],["Scopello",38.07,12.81,"Sicilia"],["Marsala",37.80,12.44,"Sicilia"],["Pantelleria",36.83,11.94,"Sicilia"],["Lampedusa",35.50,12.60,"Sicilia"],["Segesta",37.94,12.83,"Sicilia"],["Piazza Armerina",37.38,14.37,"Sicilia"],
+["Nuoro",40.32,9.33,"Sardegna"],["Oristano",39.90,8.59,"Sardegna"],["Sassari",40.73,8.56,"Sardegna"],["Bosa",40.30,8.50,"Sardegna"],["Stintino",40.94,8.22,"Sardegna"],["La Maddalena",41.21,9.41,"Sardegna"],["Cala Gonone",40.28,9.63,"Sardegna"],["San Teodoro",40.78,9.67,"Sardegna"],["Carloforte",39.15,8.31,"Sardegna"],["Orgosolo",40.20,9.35,"Sardegna"],["Barumini",39.71,9.00,"Sardegna"]
+]);
+
+window.CITTA_MONDO = window.CITTA_MONDO.concat([
+["Briançon",44.90,6.64,"Francia"],["Isola di Madeira",32.65,-16.91,"Portogallo"],["Sintra",38.80,-9.39,"Portogallo"],["Cascais",38.70,-9.42,"Portogallo"],
+["Málaga",36.72,-4.42,"Spagna"],["San Sebastián",43.32,-1.98,"Spagna"],["Bilbao",43.26,-2.93,"Spagna"],["León",42.60,-5.57,"Spagna"],["Oviedo",43.36,-5.84,"Spagna"],["Burgos",42.34,-3.70,"Spagna"],["Vitoria-Gasteiz",42.85,-2.67,"Spagna"]
+]);
+
+window.CITTA_MONDO = window.CITTA_MONDO.concat([
+["Nara",34.69,135.80,"Giappone"],["Kanazawa",36.56,136.66,"Giappone"],["Kawaguchiko",35.50,138.75,"Giappone"],["Himeji",34.82,134.69,"Giappone"],
+["Berat",40.71,19.95,"Albania"],["Saranda",39.87,20.01,"Albania"]
+]);
+
+window.CITTA_MONDO = window.CITTA_MONDO.concat([["Ostenda",51.23,2.92,"Belgio"],["Gand",51.05,3.72,"Belgio"],["Anversa",51.22,4.40,"Belgio"]]);
+
+window.IT_PAESI["San Marino"] = "San Marino";
+window.IT_PAESI["Vatican"] = "Città del Vaticano";
+window.CITTA_MONDO = window.CITTA_MONDO.concat([["San Marino",43.94,12.45,"San Marino"],["Città del Vaticano",41.90,12.45,"Città del Vaticano"]]);
+
+</script>
+<style>
+  html, body { margin: 0; background: var(--color-bg); color: var(--color-text); font-family: var(--font-body); }
+  a { color: var(--color-accent-700); }
+  a:hover { color: var(--color-accent); }
+  *:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+
+  .shell { max-width: 1560px; margin: 0 auto; }
+  .topbar { display: flex; align-items: stretch; border-bottom: 2px solid var(--color-text); }
+  .brand { font-family: var(--font-heading); font-weight: 800; letter-spacing: -0.01em;
+    text-transform: uppercase; font-size: 20px; padding: var(--space-4) var(--space-6);
+    border-right: 2px solid var(--color-text); display: flex; align-items: center; gap: var(--space-3); }
+  .brand .mark { width: 14px; height: 14px; background: var(--color-accent); }
+  .tabs { display: flex; }
+  .tab { appearance: none; background: none; border: 0; border-right: 2px solid var(--color-text);
+    font: inherit; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; font-size: 13px;
+    padding: 0 var(--space-8); cursor: pointer; color: var(--color-text); text-align: left; }
+  .tab:hover { background: var(--color-accent-100); }
+  .tab[aria-selected="true"] { background: var(--color-accent); color: #fff; }
+  .topmeta { margin-left: auto; display: flex; align-items: center; padding: 0 var(--space-6);
+    font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-neutral-700); }
+
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 2px solid var(--color-text); }
+  .stat { padding: var(--space-4) var(--space-6) var(--space-6); border-right: 2px solid var(--color-text); }
+  .stat:last-child { border-right: 0; }
+  .stat .k { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-neutral-700); }
+  .stat .v { font-family: var(--font-heading); font-weight: 800; font-size: clamp(34px, 4vw, 52px);
+    line-height: 1; margin-top: var(--space-3); font-variant-numeric: tabular-nums; }
+  .stat .v small { font-size: 0.42em; font-weight: 700; color: var(--color-neutral-600); margin-left: 4px; }
+  .bar { height: 6px; background: var(--color-neutral-300); margin-top: var(--space-3); }
+  .bar > i { display: block; height: 100%; background: var(--color-accent); }
+
+  .body { display: grid; grid-template-columns: minmax(0,1fr) 400px; }
+  .mapwrap { border-right: 2px solid var(--color-text); position: relative; min-height: 520px; }
+  .maphead { display: flex; align-items: baseline; gap: var(--space-4); padding: var(--space-4) var(--space-6);
+    border-bottom: 2px solid var(--color-text); }
+  .maphead h2 { font-family: var(--font-heading); font-weight: 800; font-size: 15px; margin: 0;
+    text-transform: uppercase; letter-spacing: 0.06em; }
+  .legend { display: flex; gap: var(--space-4); margin-left: auto; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-neutral-700); }
+  .legend span { display: flex; align-items: center; gap: 6px; }
+  .swatch { width: 10px; height: 10px; background: var(--color-accent); }
+  .swatch.tint { background: #ffc4b8; }
+  .swatch.dot { border-radius: 50%; }
+  .swatch.wish { background: var(--color-bg); box-shadow: inset 0 0 0 2px var(--color-accent); border-radius: 50%; }
+  #map { display: block; width: 100%; cursor: grab; touch-action: none; }
+  #map:active { cursor: grabbing; }
+  .zoomctl { position: absolute; right: var(--space-4); bottom: var(--space-4); display: flex; flex-direction: column;
+    border: 2px solid var(--color-text); background: var(--color-bg); }
+  .zoomctl button { appearance: none; background: none; border: 0; border-bottom: 2px solid var(--color-text);
+    font: inherit; font-weight: 700; font-size: 15px; width: 34px; height: 32px; cursor: pointer; color: var(--color-text); }
+  .zoomctl button:last-child { border-bottom: 0; font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .zoomctl button:hover { background: var(--color-accent); color: #fff; }
+  .tip { position: absolute; pointer-events: none; background: var(--color-text); color: #fff;
+    font-size: 12px; padding: 6px 9px; opacity: 0; transform: translate(-50%, -140%); white-space: nowrap; }
+
+  .side { display: flex; flex-direction: column; min-height: 0; }
+  .block { border-bottom: 2px solid var(--color-text); padding: var(--space-4) var(--space-6) var(--space-6); }
+  .block h3 { font-family: var(--font-heading); font-weight: 800; font-size: 12px; margin: 0 0 var(--space-4);
+    text-transform: uppercase; letter-spacing: 0.1em; }
+  .search { position: relative; }
+  .results { position: absolute; z-index: 5; left: 0; right: 0; top: calc(100% + 2px); background: var(--color-neutral-100);
+    border: 2px solid var(--color-text); max-height: 260px; overflow: auto; box-shadow: var(--shadow-md); }
+  .results button { display: block; width: 100%; text-align: left; background: none; border: 0;
+    border-bottom: 1px solid var(--color-neutral-300); font: inherit; font-size: 13px; padding: 9px var(--space-3); cursor: pointer; }
+  .results button:last-child { border-bottom: 0; }
+  .results button:hover, .results button[data-active="true"] { background: var(--color-accent); color: #fff; }
+  .results .sub { color: var(--color-neutral-700); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .results button:hover .sub { color: var(--color-accent-200); }
+  .empty { font-size: 12px; color: var(--color-neutral-700); padding: 9px var(--space-3); }
+
+  .pending { margin-top: var(--space-4); border: 2px solid var(--color-text); padding: var(--space-3); }
+  .pending .name { font-family: var(--font-heading); font-weight: 800; font-size: 16px; }
+  .row { display: flex; gap: var(--space-3); align-items: center; margin-top: var(--space-3); flex-wrap: wrap; }
+  .row label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-neutral-700); }
+  .yr { width: 84px; }
+  .stars { display: flex; gap: 4px; }
+  .stars button { width: 22px; height: 22px; border: 2px solid var(--color-text); background: var(--color-bg);
+    cursor: pointer; padding: 0; }
+  .stars button[data-on="true"] { background: var(--color-accent); border-color: var(--color-accent); }
+  .check { display: flex; align-items: center; gap: 6px; font-size: 12px; cursor: pointer; }
+
+  .listblock { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+  .listhead { display: flex; align-items: baseline; gap: var(--space-3); padding: var(--space-4) var(--space-6) var(--space-3); }
+  .listhead h3 { margin: 0; }
+  .count { margin-left: auto; font-size: 12px; color: var(--color-neutral-700); font-variant-numeric: tabular-nums; }
+  .list { overflow: auto; max-height: 46vh; }
+  .item { display: grid; grid-template-columns: 1fr auto; gap: var(--space-2) var(--space-3);
+    padding: var(--space-3) var(--space-6); border-top: 1px solid var(--color-neutral-300); align-items: center; }
+  .item:hover { background: var(--color-accent-100); }
+  .item.sub { padding-left: calc(var(--space-6) + var(--space-4)); background: var(--color-neutral-100); }
+  .grouphead { display: flex; align-items: center; gap: var(--space-3); width: 100%; text-align: left;
+    background: none; border: 0; border-top: 2px solid var(--color-text); font: inherit; cursor: pointer;
+    padding: var(--space-3) var(--space-6); color: var(--color-text); }
+  .grouphead:hover { background: var(--color-accent-100); }
+  .grouphead[aria-expanded="true"] { background: var(--color-text); color: var(--color-bg); }
+  .grouphead[aria-expanded="true"] .gmeta, .grouphead[aria-expanded="true"] .voto-max { color: var(--color-neutral-400); }
+  .grouphead[aria-expanded="true"] .voto { color: var(--color-accent-400); }
+  .gname { font-family: var(--font-heading); font-weight: 800; font-size: 14px; }
+  .gmeta { margin-left: auto; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--color-neutral-700); white-space: nowrap; }
+  .chev { font-weight: 700; width: 12px; text-align: center; }
+  .item .nm { font-weight: 600; font-size: 14px; }
+  .item .mt { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-neutral-700); }
+  .item .mt .tag { white-space: nowrap; }
+  .voto { font-weight: 700; color: var(--color-accent-700); font-variant-numeric: tabular-nums; }
+  .voto-max { color: var(--color-neutral-600); }
+  .rate { display: inline-flex; gap: 3px; vertical-align: middle; margin-left: 6px; }
+  .rate i { width: 6px; height: 6px; background: var(--color-accent); display: block; }
+  .rate i[data-off="true"] { background: var(--color-neutral-400); }
+  .del { appearance: none; background: none; border: 2px solid transparent; font: inherit; font-size: 16px;
+    line-height: 1; width: 26px; height: 26px; cursor: pointer; color: var(--color-neutral-700); }
+  .del:hover { color: #fff; background: var(--color-accent); border-color: var(--color-accent); }
+  .regions { display: flex; flex-wrap: wrap; gap: 6px; }
+  .foot { padding: var(--space-3) var(--space-6); font-size: 11px; color: var(--color-neutral-600);
+    text-transform: uppercase; letter-spacing: 0.08em; display: flex; gap: var(--space-4); align-items: center; }
+  @media (max-width: 1100px) {
+    .body { grid-template-columns: 1fr; }
+    .mapwrap { border-right: 0; border-bottom: 2px solid var(--color-text); }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .stat:nth-child(2) { border-right: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="shell">
+  <header class="topbar">
+    <div class="brand"><span class="mark"></span>Archivio viaggi</div>
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" id="tab-world" aria-selected="true" data-scope="world">Mondo</button>
+      <button class="tab" role="tab" id="tab-it" aria-selected="false" data-scope="it">Italia</button>
+    </div>
+    <div class="topmeta" id="topmeta"></div>
+  </header>
+
+  <section class="stats" id="stats"></section>
+
+  <div class="body">
+    <section class="mapwrap">
+      <div class="maphead">
+        <h2 id="maptitle">Mappa del mondo</h2>
+        <div class="legend" id="legend">
+          <span><i class="swatch"></i> visitato</span>
+          <span><i class="swatch dot"></i> luogo</span>
+          <span><i class="swatch wish"></i> da visitare</span>
+        </div>
+      </div>
+      <svg id="map" role="img" aria-label="Mappa dei luoghi visitati"></svg>
+      <div class="zoomctl">
+        <button type="button" id="zin" title="Ingrandisci" aria-label="Ingrandisci">+</button>
+        <button type="button" id="zout" title="Riduci" aria-label="Riduci">−</button>
+        <button type="button" id="zreset" title="Reimposta lo zoom">reset</button>
+      </div>
+      <div class="tip" id="tip"></div>
+    </section>
+
+    <aside class="side">
+      <div class="block" id="syncblock">
+        <h3>Sincronizzazione</h3>
+        <div id="syncstatus" style="font-size:12px; opacity:0.75; margin-bottom:8px">Solo su questo dispositivo</div>
+        <button type="button" class="btn btn-secondary" id="syncbtn" style="width:100%">Accedi con Google Drive</button>
+      </div>
+
+      <div class="block">
+        <h3 id="addlabel">Aggiungi un posto</h3>
+        <div class="search">
+          <input class="input" id="q" type="text" autocomplete="off" placeholder="Cerca paese o città…" aria-label="Cerca un posto">
+          <div class="results" id="results" hidden=""></div>
+        </div>
+        <div id="pending"></div>
+      </div>
+
+      <div class="block" id="regionblock" hidden="">
+        <h3>Regioni coperte</h3>
+        <div class="regions" id="regions"></div>
+      </div>
+
+      <div class="listblock">
+        <div class="listhead">
+          <h3 id="listtitle">I miei viaggi</h3>
+          <span class="count" id="count"></span>
+        </div>
+        <div class="list" id="list"></div>
+      </div>
+
+      <div class="foot">
+        <span id="wishcount"></span>
+        <button class="btn btn-ghost" id="reset" style="margin-left:auto">Svuota archivio</button>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<script>
+const KEY = 'archivio-viaggi-v2';
+const TOT_PAESI = 195;
+const NAT = { bg: '#f3f2f2', land: '#d7d3d3', line: '#f3f2f2', ink: '#201e1d', accent: '#ec3013', tint: '#ffc4b8' };
+
+function t(name, place, lat, lon, date, rating) {
+  return { kind: 'city', name: name, place: place, lat: lat, lon: lon, date: date,
+    year: date ? +date.slice(0, 4) : null, rating: rating, wish: false, scope: 'world' };
+}
+function it(name, place, lat, lon) {
+  return { kind: 'city', name: name, place: place, lat: lat, lon: lon, date: null,
+    year: null, rating: null, wish: false, scope: 'it' };
+}
+function w(name, place, lat, lon) {
+  return { kind: 'city', name: name, place: place, lat: lat, lon: lon, date: null,
+    year: null, rating: null, wish: false, scope: 'world' };
+}
+
+const SEED = [
+  t('Bruxelles','Belgio',50.85,4.35,'2015-05-03',8.0),
+  t('Ostenda','Belgio',51.23,2.92,'2015-05-03',8.0),
+  t('Lloret de Mar','Spagna',41.70,2.85,'2015-08-01',6.0),
+  t('Valencia','Spagna',39.47,-0.38,'2015-08-01',9.0),
+  t('Edimburgo e Glasgow','Regno Unito',55.95,-3.19,'2016-04-04',7.0),
+  t('Barcellona','Spagna',41.39,2.17,'2016-08-07',6.5),
+  t('Lisbona','Portogallo',38.72,-9.14,'2017-05-11',null),
+  t('Magaluf','Spagna',39.57,2.65,'2017-08-01',5.0),
+  t('Amsterdam','Paesi Bassi',52.37,4.90,'2017-10-07',6.0),
+  t('Ginevra','Svizzera',46.20,6.14,'2017-12-31',7.0),
+  t('Madrid','Spagna',40.42,-3.70,'2018-04-14',8.0),
+  t('Londra','Regno Unito',51.51,-0.13,'2018-05-11',6.3),
+  t('Budapest','Ungheria',47.50,19.04,'2018-12-30',6.8),
+  t('Atene','Grecia',37.98,23.73,'2019-04-05',5.1),
+  t('Porto','Portogallo',41.15,-8.61,'2019-05-20',7.5),
+  t('Monaco di Baviera','Germania',48.14,11.58,'2019-09-20',7.3),
+  t('Praga','Rep. Ceca',50.08,14.44,'2019-12-20',6.4),
+  t('Tirana','Albania',41.33,19.82,'2023-08-05',8.0),
+  t('Berat','Albania',40.71,19.95,'2023-08-05',8.0),
+  t('Saranda','Albania',39.87,20.01,'2023-08-05',8.0),
+  t('Bucarest','Romania',44.43,26.10,'2023-10-29',8.5),
+  t('Seattle','Stati Uniti',47.61,-122.33,'2024-02-29',6.7),
+  t('Charlotte e Mooresville','Stati Uniti',35.23,-80.84,'2024-05-09',7.4),
+  t('Andalusia','Spagna',37.18,-3.60,'2024-08-12',8.6),
+  t('Zagabria','Croazia',45.81,15.98,'2025-01-03',8.3),
+  t('Parigi','Francia',48.86,2.35,'2025-02-09',8.0),
+  t('Paesi Baschi','Spagna',43.26,-2.93,'2025-04-19',8.2),
+  t('Laghi di Plitvice','Croazia',44.88,15.62,'2025-08-19',7.8),
+  t('New York','Stati Uniti',40.71,-74.01,'2025-09-07',8.6),
+  t('Cracovia','Polonia',50.06,19.94,'2025-09-18',7.0),
+  w('Tokyo','Giappone',35.68,139.65),
+  w('Nara','Giappone',34.69,135.80),
+  w('Kanazawa','Giappone',36.56,136.66),
+  w('Kawaguchiko','Giappone',35.50,138.75),
+  w('Himeji','Giappone',34.82,134.69),
+  w('Portland','Stati Uniti',45.52,-122.68),
+  w('Lubiana','Slovenia',46.06,14.51),
+  w('Erfurt','Germania',50.98,11.03),
+  w('Bordeaux','Francia',44.84,-0.58),
+  w('Cartagena','Spagna',37.61,-0.99),
+  w('Siviglia','Spagna',37.39,-5.99),
+  w('Le\u00f3n','Spagna',42.60,-5.57),
+  w('Oviedo','Spagna',43.36,-5.84),
+  w('M\u00e1laga','Spagna',36.72,-4.42),
+  w('Brian\u00e7on','Francia',44.90,6.64),
+  w('Isola di Madeira','Portogallo',32.65,-16.91),
+  w('Sintra','Portogallo',38.80,-9.39),
+  w('Cascais','Portogallo',38.70,-9.42),
+  w('San Sebasti\u00e1n','Spagna',43.32,-1.98),
+  w('Bilbao','Spagna',43.26,-2.93),
+  w('Burgos','Spagna',42.34,-3.70),
+  w('Vitoria-Gasteiz','Spagna',42.85,-2.67),
+  w('San Marino','San Marino',43.94,12.45),
+  w('Citt\u00e0 del Vaticano','Citt\u00e0 del Vaticano',41.90,12.45)
+];
+
+const SEED_IT = [
+  it('Torino', 'Piemonte', 45.07, 7.69), it('Barolo', 'Piemonte', 44.61, 7.94),
+  it('Genova', 'Liguria', 44.41, 8.93), it('Milano', 'Lombardia', 45.46, 9.19),
+  it('Bergamo', 'Lombardia', 45.69, 9.67), it('Trento', 'Trentino-Alto Adige', 46.07, 11.12),
+  it('Bolzano', 'Trentino-Alto Adige', 46.50, 11.35), it('Bressanone', 'Trentino-Alto Adige', 46.72, 11.66),
+  it('Verona', 'Veneto', 45.44, 10.99), it('Venezia', 'Veneto', 45.44, 12.33),
+  it('Trieste', 'Friuli-Venezia Giulia', 45.65, 13.78), it('Bologna', 'Emilia-Romagna', 44.49, 11.34),
+  it('Firenze', 'Toscana', 43.77, 11.26), it('Siena', 'Toscana', 43.32, 11.33)
+];
+
+let places = load();
+let scope = 'world';
+let pending = null;
+let world = null, countries = null, italy = null;
+
+function load() {
+  const raw = localStorage.getItem(KEY);
+  if (raw) {
+    let data = null;
+    try {
+      data = JSON.parse(raw);
+    } catch (e) {
+      // dati illeggibili: li conservo, non li sovrascrivo
+      localStorage.setItem(KEY + ':corrotto', raw);
+      console.warn('Dati non leggibili, conservati in ' + KEY + ':corrotto');
+      return [];
+    }
+    if (!Array.isArray(data)) return [];
+    try { restore(data); } catch (e) { console.warn(e); }
+    return data;
+  }
+  const fresh = SEED.concat(SEED_IT);
+  localStorage.setItem(KEY, JSON.stringify(fresh));
+  localStorage.setItem(KEY + ':it-restore', '1');
+  return fresh;
+}
+// ripristino una volta sola dei luoghi italiani persi
+function restore(data) {
+  if (localStorage.getItem(KEY + ':it-restore')) return;
+  let added = 0;
+  SEED_IT.forEach(s => {
+    if (!data.some(p => p.scope === 'it' && norm(p.name) === norm(s.name))) { data.push(s); added++; }
+  });
+  localStorage.setItem(KEY + ':it-restore', '1');
+  if (added) localStorage.setItem(KEY, JSON.stringify(data));
+}
+function save() {
+  const prev = localStorage.getItem(KEY);
+  if (prev) localStorage.setItem(KEY + ':bak', prev);
+  localStorage.setItem(KEY, JSON.stringify(places));
+  Drive.queueSync();
+}
+function norm(s) { return String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); }
+
+/* ================= Sincronizzazione con Google Drive =================
+   Configurazione: sostituisci CLIENT_ID con il tuo, creato su
+   https://console.cloud.google.com (OAuth Client ID, tipo "Web application").
+   Vedi il file ISTRUZIONI.md incluso per i passi completi. */
+const DRIVE_CONFIG = {
+  CLIENT_ID: '615096548657-n8rjg7q4iilimdrit5tefkv80d2j28sj.apps.googleusercontent.com',
+  SCOPES: 'https://www.googleapis.com/auth/drive.file',
+  FILENAME: 'archivio-viaggi-dati.json'
+};
+
+const Drive = (function () {
+  let tokenClient = null;
+  let accessToken = null;
+  let fileId = null;
+  let signedIn = false;
+  let syncTimer = null;
+  let syncing = false;
+
+  const statusEl = () => document.getElementById('syncstatus');
+  const btnEl = () => document.getElementById('syncbtn');
+
+  function setStatus(msg) { const el = statusEl(); if (el) el.textContent = msg; }
+
+  function updateButton() {
+    const b = btnEl();
+    if (!b) return;
+    b.textContent = signedIn ? 'Disconnetti' : 'Accedi con Google Drive';
+  }
+
+  function configured() {
+    return DRIVE_CONFIG.CLIENT_ID && DRIVE_CONFIG.CLIENT_ID.indexOf('INSERISCI_QUI') === -1;
+  }
+
+  function init() {
+    if (!configured()) {
+      setStatus('Drive non configurato (vedi ISTRUZIONI.md)');
+      const b = btnEl();
+      if (b) b.disabled = true;
+      return;
+    }
+    const tryInit = () => {
+      if (typeof google === 'undefined' || !google.accounts) { setTimeout(tryInit, 200); return; }
+      tokenClient = google.accounts.oauth2.initTokenClient({
+        client_id: DRIVE_CONFIG.CLIENT_ID,
+        scope: DRIVE_CONFIG.SCOPES,
+        callback: onToken
+      });
+      btnEl().addEventListener('click', onButtonClick);
+      // tentativo di accesso silenzioso, se l'utente aveva già autorizzato in precedenza
+      tokenClient.requestAccessToken({ prompt: 'none' });
+    };
+    tryInit();
+  }
+
+  function onButtonClick() {
+    if (signedIn) { signOut(); return; }
+    tokenClient.requestAccessToken({ prompt: 'consent' });
+  }
+
+  function signOut() {
+    if (accessToken) { try { google.accounts.oauth2.revoke(accessToken); } catch (e) {} }
+    accessToken = null; fileId = null; signedIn = false;
+    updateButton(); setStatus('Solo su questo dispositivo');
+  }
+
+  async function onToken(resp) {
+    if (resp.error) {
+      // 'prompt: none' senza sessione precedente fallisce silenziosamente: normale al primo utilizzo
+      if (resp.error !== 'immediate_failed_no_hint' && resp.error !== 'user_logged_out') {
+        console.warn('Google auth:', resp.error);
+      }
+      return;
+    }
+    accessToken = resp.access_token;
+    signedIn = true;
+    updateButton();
+    setStatus('Connessione a Drive…');
+    try {
+      await findOrCreateFile();
+      await pullFromDrive();
+      render();
+      setStatus('Sincronizzato con Google Drive');
+    } catch (e) {
+      console.warn('Errore sincronizzazione Drive:', e);
+      setStatus('Errore di sincronizzazione (dati locali al sicuro)');
+    }
+  }
+
+  async function driveFetch(url, options) {
+    options = options || {};
+    options.headers = Object.assign({}, options.headers, { Authorization: 'Bearer ' + accessToken });
+    const res = await fetch(url, options);
+    if (res.status === 401) {
+      // token scaduto: segnalo, tento un rinnovo silenzioso, il prossimo salvataggio ci riproverà
+      signedIn = false;
+      updateButton();
+      setStatus('Sessione scaduta, rinnovo…');
+      tokenClient.requestAccessToken({ prompt: '' });
+      throw new Error('token scaduto, riprova tra poco');
+    }
+    return res;
+  }
+
+  async function findOrCreateFile() {
+    const q = encodeURIComponent("name='" + DRIVE_CONFIG.FILENAME + "' and trashed=false");
+    const res = await driveFetch('https://www.googleapis.com/drive/v3/files?q=' + q + '&spaces=drive&fields=files(id,name,modifiedTime)');
+    const data = await res.json();
+    if (data.files && data.files.length) {
+      fileId = data.files[0].id;
+      return;
+    }
+    const metaRes = await driveFetch('https://www.googleapis.com/drive/v3/files', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: DRIVE_CONFIG.FILENAME, mimeType: 'application/json' })
+    });
+    const created = await metaRes.json();
+    fileId = created.id;
+    await pushToDrive(places);
+  }
+
+  async function pullFromDrive() {
+    if (!fileId) return;
+    const res = await driveFetch('https://www.googleapis.com/drive/v3/files/' + fileId + '?alt=media');
+    if (!res.ok) return;
+    const text = await res.text();
+    if (!text) return;
+    let data;
+    try { data = JSON.parse(text); } catch (e) { console.warn('JSON non valido su Drive'); return; }
+    if (Array.isArray(data) && data.length) {
+      places = data;
+      localStorage.setItem(KEY, JSON.stringify(places));
+    }
+  }
+
+  async function pushToDrive(data) {
+    if (!fileId || !accessToken) return;
+    await driveFetch('https://www.googleapis.com/upload/drive/v3/files/' + fileId + '?uploadType=media', {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+  }
+
+  function queueSync() {
+    if (!signedIn || !configured()) return;
+    clearTimeout(syncTimer);
+    syncTimer = setTimeout(async () => {
+      if (syncing) return;
+      syncing = true;
+      setStatus('Sincronizzazione…');
+      try {
+        await pushToDrive(places);
+        setStatus('Sincronizzato con Google Drive');
+      } catch (e) {
+        console.warn(e);
+        setStatus('Sincronizzazione non riuscita, riprovo al prossimo salvataggio');
+      }
+      syncing = false;
+    }, 800);
+  }
+
+  return { init, queueSync };
+})();
+const itName = en => (window.IT_PAESI[en] || en);
+
+/* ---------- indice di ricerca ---------- */
+function index() {
+  if (scope === 'it') {
+    return window.CITTA_ITALIA.map(c => ({ kind: 'city', name: c[0], lat: c[1], lon: c[2], place: c[3], scope: 'it' }));
+  }
+  const paesi = Object.values(window.IT_PAESI).map(n => ({ kind: 'country', name: n, place: 'Paese' }));
+  const citta = window.CITTA_MONDO.map(c => ({ kind: 'city', name: c[0], lat: c[1], lon: c[2], place: c[3], scope: 'world' }));
+  return paesi.concat(citta);
+}
+function inScope(p) { return p.kind === 'country' ? scope === 'world' : p.scope === scope; }
+function has(item) {
+  return places.some(p => p.kind === item.kind && norm(p.name) === norm(item.name) && (p.kind === 'country' || p.scope === item.scope));
+}
+
+/* ---------- ricerca ---------- */
+const q = document.getElementById('q');
+const resultsEl = document.getElementById('results');
+q.addEventListener('input', search);
+q.addEventListener('focus', search);
+document.addEventListener('click', e => { if (!e.target.closest('.search')) resultsEl.hidden = true; });
+
+function search() {
+  const term = norm(q.value.trim());
+  if (term.length < 1) { resultsEl.hidden = true; return; }
+  const hits = index()
+    .filter(i => norm(i.name).startsWith(term) || norm(i.name).includes(term))
+    .sort((a, b) => (norm(a.name).startsWith(term) ? 0 : 1) - (norm(b.name).startsWith(term) ? 0 : 1) || a.name.localeCompare(b.name))
+    .slice(0, 40);
+  resultsEl.innerHTML = '';
+  if (!hits.length) {
+    resultsEl.innerHTML = '<div class="empty">Nessun risultato in elenco.</div>';
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.innerHTML = '<span>Aggiungi «' + q.value.trim() + '» a mano</span> <span class="sub">indica coordinate</span>';
+    b.addEventListener('click', () => {
+      pending = { kind: 'city', name: q.value.trim(), place: scope === 'it' ? window.REGIONI[0] : 'Italia',
+        lat: null, lon: null, scope: scope, custom: true };
+      q.value = ''; resultsEl.hidden = true; renderPending();
+    });
+    resultsEl.appendChild(b);
+  } else {
+    hits.forEach(h => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      const already = has(h) ? ' · già in archivio' : '';
+      b.innerHTML = '<span>' + h.name + '</span> <span class="sub">' + h.place + already + '</span>';
+      b.addEventListener('click', () => { pending = Object.assign({}, h); q.value = ''; resultsEl.hidden = true; renderPending(); });
+      resultsEl.appendChild(b);
+    });
+  }
+  resultsEl.hidden = false;
+}
+
+/* ---------- modifica di una voce esistente ---------- */
+function startEdit(p) {
+  pending = Object.assign({}, p);
+  pending.editing = p;
+  if (pending.kind === 'city') pending.custom = true;
+  q.value = ''; resultsEl.hidden = true;
+  renderPending();
+  pendingEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+/* ---------- form di aggiunta ---------- */
+const pendingEl = document.getElementById('pending');
+function renderPending() {
+  pendingEl.innerHTML = '';
+  if (!pending) return;
+  if (pending.year === undefined) pending.year = new Date().getFullYear();
+  if (pending.rating === undefined) pending.rating = 8;
+  if (pending.wish === undefined) pending.wish = false;
+
+  const showLoc = pending.custom && pending.kind === 'city';
+  const custom = showLoc ? '<div class="row"><label for="pl">' + (pending.scope === 'it' ? 'Regione' : 'Paese') + '</label>' +
+    '<select class="input" id="pl" style="flex:1;min-width:120px">' +
+    (pending.scope === 'it' ? window.REGIONI : Object.values(window.IT_PAESI).sort((a, b) => a.localeCompare(b)))
+      .map(r => '<option' + (r === pending.place ? ' selected' : '') + '>' + r + '</option>').join('') +
+    '</select></div>' +
+    '<div class="row"><label for="la">Lat</label><input class="input yr" id="la" type="number" step="0.01" placeholder="45.07" value="' + (pending.lat != null ? pending.lat : '') + '">' +
+    '<label for="lo">Lon</label><input class="input yr" id="lo" type="number" step="0.01" placeholder="7.69" value="' + (pending.lon != null ? pending.lon : '') + '"></div>' : '';
+
+  const box = document.createElement('div');
+  box.className = 'pending';
+  box.innerHTML =
+    (pending.editing ? '<div class="mt" style="font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--color-neutral-700)">modifica</div>' : '') +
+    '<div class="row"><label for="pn">Nome</label><input class="input" id="pn" style="flex:1;min-width:120px" value="' + pending.name + '"></div>' +
+    (!pending.editing ? '<div class="mt" style="font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--color-neutral-700)">' + (pending.custom ? 'nuovo posto' : pending.place) + '</div>' : '') +
+    custom +
+    '<div class="row"><label for="yr">Anno</label><input class="input yr" id="yr" type="number" min="1900" max="2100" value="' + pending.year + '">' +
+    '<label for="rt">Voto /10</label><input class="input yr" id="rt" type="number" min="1" max="10" step="0.1" value="' + pending.rating + '"></div>' +
+    '<div class="row"><label class="check"><input type="checkbox" id="wish"' + (pending.wish ? ' checked' : '') + '> Solo da visitare (wishlist)</label></div>' +
+    '<div class="row"><button class="btn btn-primary" id="add">' + (pending.editing ? 'Salva modifiche' : 'Aggiungi all\u2019archivio') + '</button>' +
+    '<button class="btn btn-ghost" id="cancel">Annulla</button></div>';
+  pendingEl.appendChild(box);
+
+  box.querySelector('#pn').addEventListener('input', e => { pending.name = e.target.value; });
+  box.querySelector('#rt').addEventListener('input', e => { pending.rating = +e.target.value || null; });
+  if (showLoc) {
+    box.querySelector('#pl').addEventListener('change', e => { pending.place = e.target.value; });
+    box.querySelector('#la').addEventListener('input', e => { pending.lat = e.target.value === '' ? null : +e.target.value; });
+    box.querySelector('#lo').addEventListener('input', e => { pending.lon = e.target.value === '' ? null : +e.target.value; });
+  }
+  box.querySelector('#yr').addEventListener('input', e => { pending.year = +e.target.value || null; });
+  box.querySelector('#yr').disabled = pending.wish;
+  box.querySelector('#rt').disabled = pending.wish;
+  box.querySelector('#wish').addEventListener('change', e => {
+    pending.wish = e.target.checked;
+    box.querySelector('#yr').disabled = e.target.checked;
+    box.querySelector('#rt').disabled = e.target.checked;
+  });
+  box.querySelector('#cancel').addEventListener('click', () => { pending = null; renderPending(); });
+  box.querySelector('#add').addEventListener('click', () => {
+    if (!pending.name || !pending.name.trim()) { alert('Serve un nome.'); return; }
+    if (showLoc && (pending.lat == null || pending.lon == null)) {
+      alert('Servono latitudine e longitudine per mettere il posto sulla mappa.');
+      return;
+    }
+    const keepDate = pending.editing && pending.editing.date && pending.editing.year === pending.year;
+    const p = {
+      kind: pending.kind, name: pending.name.trim(), place: pending.place,
+      year: pending.wish ? null : pending.year, rating: pending.wish ? null : pending.rating,
+      date: keepDate ? pending.editing.date : null,
+      wish: pending.wish
+    };
+    if (pending.kind === 'city') { p.lat = pending.lat; p.lon = pending.lon; p.scope = pending.scope; }
+    if (pending.editing) {
+      places = places.filter(x => x !== pending.editing);
+    } else if (has(p)) {
+      places = places.filter(x => !(x.kind === p.kind && norm(x.name) === norm(p.name) && (p.kind === 'country' || x.scope === p.scope)));
+    }
+    places.push(p);
+    save(); pending = null; renderPending(); render();
+  });
+}
+
+/* ---------- pannello ---------- */
+const MESI = ['gen', 'feb', 'mar', 'apr', 'mag', 'giu', 'lug', 'ago', 'set', 'ott', 'nov', 'dic'];
+function fmtDate(p) {
+  if (p.date) { const d = p.date.split('-'); return MESI[+d[1] - 1] + ' ' + d[0]; }
+  return p.year || '—';
+}
+function ratingBadge(n) {
+  if (n == null) return '';
+  return '<b class="voto">' + (Math.round(n * 10) / 10).toFixed(1) + '</b><span class="voto-max">/10</span>';
+}
+function paesiVisitati() {
+  const s = new Set();
+  places.filter(p => !p.wish).forEach(p => {
+    if (p.kind === 'country') s.add(p.name);
+    else if (p.scope === 'world') s.add(p.place);
+  });
+  return s;
+}
+function render() {
+  const items = places.filter(inScope);
+  const visited = items.filter(p => !p.wish);
+  const wish = items.filter(p => p.wish);
+  const paesiSet = paesiVisitati();
+  const paesi = paesiSet.size;
+  const voti = places.filter(p => !p.wish && p.rating != null).map(p => p.rating);
+  const media = voti.length ? (voti.reduce((a, b) => a + b, 0) / voti.length) : null;
+  const regs = new Set(places.filter(p => p.scope === 'it' && !p.wish).map(p => p.place));
+  const pct = Math.round(paesi / TOT_PAESI * 1000) / 10;
+
+  document.getElementById('maptitle').textContent = scope === 'world' ? 'Mappa del mondo' : 'Mappa d\u2019Italia';
+  document.getElementById('addlabel').textContent = scope === 'world' ? 'Aggiungi paese o città' : 'Aggiungi un posto in Italia';
+  q.placeholder = scope === 'world' ? 'Cerca paese o città…' : 'Cerca città o località…';
+  document.getElementById('listtitle').textContent = scope === 'world' ? 'Viaggi nel mondo' : 'Viaggi in Italia';
+  document.getElementById('regionblock').hidden = scope !== 'it';
+  document.getElementById('topmeta').textContent = visited.length + ' luoghi registrati';
+
+  document.getElementById('legend').innerHTML = scope === 'world'
+    ? '<span><i class="swatch"></i> paese visitato</span><span><i class="swatch dot"></i> viaggio</span><span><i class="swatch wish"></i> da visitare</span>'
+    : '<span><i class="swatch tint"></i> regione visitata</span><span><i class="swatch dot"></i> luogo</span><span><i class="swatch wish"></i> da visitare</span>';
+
+  document.getElementById('stats').innerHTML = scope === 'world'
+    ? stat('Paesi visitati', paesi, '/ ' + TOT_PAESI) +
+      stat('Mondo coperto', pct + '%', '', paesi / TOT_PAESI) +
+      stat('Viaggi registrati', places.filter(p => p.kind === 'city' && p.scope === 'world' && !p.wish).length, '') +
+      stat('Voto medio', media ? (Math.round(media * 10) / 10).toFixed(1) : '—', media ? '/ 10' : '', media ? media / 10 : undefined)
+    : stat('Regioni coperte', regs.size, '/ 20', regs.size / 20) +
+      stat('Luoghi in Italia', visited.length, '') +
+      stat('Ultimo viaggio', lastYear(visited) || '—', '') +
+      stat('In wishlist', wish.length, '');
+
+  document.getElementById('count').textContent = visited.length + ' visitati · ' + wish.length + ' da visitare';
+  document.getElementById('wishcount').textContent = 'Dati salvati sul tuo browser';
+
+  const list = document.getElementById('list');
+  list.innerHTML = '';
+  if (!items.length) list.innerHTML = '<div class="empty" style="padding:var(--space-6)">Nessun posto ancora. Cercalo qui sopra.</div>';
+
+  const byDate = (a, b) => (b.date || String(b.year || '')).localeCompare(a.date || String(a.year || '')) || a.name.localeCompare(b.name);
+  const groups = new Map();
+  items.forEach(p => {
+    const key = p.kind === 'country' ? p.name : p.place;
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(p);
+  });
+
+  [...groups.entries()]
+    .sort((a, b) => b[1].filter(p => !p.wish).length - a[1].filter(p => !p.wish).length || a[0].localeCompare(b[0]))
+    .forEach(entry => {
+      const key = entry[0], arr = entry[1];
+      const open = selected != null && regKey(selected) === regKey(key);
+      const vis = arr.filter(p => !p.wish);
+      const gv = vis.filter(p => p.rating != null).map(p => p.rating);
+      const avg = gv.length ? gv.reduce((a, b) => a + b, 0) / gv.length : null;
+      const head = document.createElement('button');
+      head.type = 'button';
+      head.className = 'grouphead';
+      head.setAttribute('aria-expanded', String(open));
+      head.innerHTML = '<span class="chev">' + (open ? '\u2212' : '+') + '</span>' +
+        '<span class="gname">' + key + '</span>' +
+        '<span class="gmeta">' + vis.length + (arr.length - vis.length ? ' + ' + (arr.length - vis.length) + ' da fare' : '') +
+        (avg != null ? ' \u00b7 ' + ratingBadge(avg) : '') + '</span>';
+      head.addEventListener('click', () => selectFeature(key));
+      head.addEventListener('mouseenter', () => highlight(key));
+      head.addEventListener('mouseleave', () => highlight(null));
+      list.appendChild(head);
+      if (!open) return;
+
+      arr.slice().sort(byDate).forEach(p => {
+        const row = document.createElement('div');
+        row.className = 'item sub';
+        const meta = p.wish
+          ? '<span class="tag tag-outline" style="font-size:10px">da visitare</span>'
+          : fmtDate(p) + (p.rating != null ? ' \u00b7 ' + ratingBadge(p.rating) : '');
+        row.innerHTML = '<div><div class="nm">' + p.name + '</div></div>' +
+          '<div style="text-align:right;white-space:nowrap"><div class="mt">' + meta + '</div></div>';
+        const edit = document.createElement('button');
+        edit.className = 'del'; edit.type = 'button'; edit.textContent = '\u270e';
+        edit.title = 'Modifica ' + p.name;
+        edit.addEventListener('click', () => startEdit(p));
+        row.appendChild(edit);
+        const del = document.createElement('button');
+        del.className = 'del'; del.type = 'button'; del.textContent = '\u00d7';
+        del.title = 'Rimuovi ' + p.name;
+        del.addEventListener('click', () => { places = places.filter(x => x !== p); save(); render(); });
+        row.appendChild(del);
+        row.style.gridTemplateColumns = '1fr auto 26px 26px';
+        row.addEventListener('mouseenter', () => highlightCity(p.name));
+        row.addEventListener('mouseleave', () => highlightCity(null));
+        list.appendChild(row);
+      });
+    });
+
+  const rEl = document.getElementById('regions');
+  rEl.innerHTML = window.REGIONI.map(r =>
+    '<span class="tag ' + (regs.has(r) ? 'tag-accent' : 'tag-neutral') + '" style="font-size:10px">' + r + '</span>').join('');
+
+  drawMap();
+}
+function lastYear(items) { return items.reduce((m, p) => Math.max(m, p.year || 0), 0) || null; }
+function stat(k, v, sub, frac) {
+  return '<div class="stat"><div class="k">' + k + '</div><div class="v">' + v +
+    (sub ? '<small>' + sub + '</small>' : '') + '</div>' +
+    (frac !== undefined ? '<div class="bar"><i style="width:' + Math.min(100, frac * 100) + '%"></i></div>' : '') + '</div>';
+}
+
+/* ---------- mappa ---------- */
+const svg = d3.select('#map');
+const tip = document.getElementById('tip');
+let currentSize = { w: 0, h: 0 };
+let zoomBehaviour = null, zk = 1;
+let regioni = null;
+let selected = null;
+let currentPath = null, currentFeats = [];
+
+function selectFeature(name) {
+  selected = (selected != null && regKey(selected) === regKey(name)) ? null : name;
+  render();
+  if (selected) zoomToFeature(selected); 
+}
+function zoomToFeature(name) {
+  if (!currentPath || !zoomBehaviour) return;
+  const f = currentFeats.find(d => regKey(featName(d)) === regKey(name));
+  if (!f) return;
+  const b = currentPath.bounds(f);
+  const dx = b[1][0] - b[0][0], dy = b[1][1] - b[0][1];
+  const { w, h } = currentSize;
+  const k = Math.max(1, Math.min(20, 0.8 * Math.min(w / dx, h / dy)));
+  const cx = (b[0][0] + b[1][0]) / 2, cy = (b[0][1] + b[1][1]) / 2;
+  svg.transition().duration(600).call(zoomBehaviour.transform,
+    d3.zoomIdentity.translate(w / 2, h / 2).scale(k).translate(-cx, -cy));
+}
+function highlightCity(name) {
+  svg.selectAll('g[data-city] circle').attr('r', function () {
+    const on = name && this.parentNode.getAttribute('data-city') === name;
+    return baseR() / zk * (on ? 1.8 : 1);
+  });
+}
+
+function featName(d) {
+  const p = d.properties || {};
+  return p.reg_name ? String(p.reg_name).split('/')[0].trim() : itName(p.name);
+}
+function regKey(s) { return norm(String(s).split('/')[0]).replace(/[^a-z]/g, ''); }
+function regioniVisitate() {
+  return new Set(places.filter(p => p.scope === 'it' && !p.wish).map(p => p.place));
+}
+
+function mapSize() {
+  const box = document.querySelector('.mapwrap').getBoundingClientRect();
+  const head = document.querySelector('.maphead').getBoundingClientRect();
+  const w = Math.max(320, box.width);
+  const h = Math.max(380, box.height - head.height);
+  return { w, h };
+}
+
+function drawMap() {
+  if (!countries) return;
+  const { w, h } = mapSize();
+  currentSize = { w, h };
+  svg.attr('viewBox', '0 0 ' + w + ' ' + h).attr('height', h);
+  svg.selectAll('*').remove();
+
+  const visitedNames = new Set([...paesiVisitati()].map(norm));
+  const wishNames = new Set(
+    places.filter(p => p.wish).map(p => norm(p.kind === 'country' ? p.name : p.place))
+      .filter(n => !visitedNames.has(n)));
+
+  let feats, projection;
+  if (scope === 'world') {
+    feats = countries.features.filter(f => f.properties.name !== 'Antarctica');
+    projection = d3.geoNaturalEarth1().fitExtent([[10, 10], [w - 10, h - 10]], { type: 'FeatureCollection', features: feats });
+  } else if (regioni) {
+    feats = regioni.features;
+    projection = d3.geoMercator().fitExtent([[24, 16], [w - 24, h - 16]], regioni);
+  } else {
+    feats = [italy];
+    projection = d3.geoMercator().fitExtent([[24, 16], [w - 24, h - 16]], italy);
+  }
+  const path = d3.geoPath(projection);
+  currentPath = path; currentFeats = feats;
+
+  const regVisited = new Set([...regioniVisitate()].map(regKey));
+  const root = svg.append('g').attr('class', 'zoomroot');
+  const g = root.append('g');
+  g.selectAll('path').data(feats).join('path')
+    .attr('d', path)
+    .attr('data-name', d => featName(d))
+    .attr('fill', d => {
+      if (scope === 'it') return regVisited.has(regKey(featName(d))) ? NAT.tint : NAT.land;
+      const n = norm(itName(d.properties.name));
+      if (n === 'italia') return NAT.ink;
+      if (visitedNames.has(n)) return NAT.accent;
+      if (wishNames.has(n)) return NAT.tint;
+      return NAT.land;
+    })
+    .attr('stroke', d => (selected && regKey(featName(d)) === regKey(selected)) ? NAT.ink : (scope === 'it' ? NAT.ink : NAT.line))
+    .attr('stroke-width', d => (selected && regKey(featName(d)) === regKey(selected)) ? 2.5 : 1)
+    .on('click', (e, d) => selectFeature(featName(d)))
+    .style('cursor', 'pointer')
+    .on('mousemove', function (e, d) {
+      const n = featName(d);
+      if (scope === 'it') {
+        const luoghi = places.filter(p => p.scope === 'it' && !p.wish && regKey(p.place) === regKey(n)).length;
+        showTip(e, n + ' · ' + (luoghi ? luoghi + (luoghi === 1 ? ' luogo' : ' luoghi') : 'mai visitata'));
+      } else {
+        showTip(e, n + (visitedNames.has(norm(n)) ? ' · visitato' : wishNames.has(norm(n)) ? ' · da visitare' : ''));
+      }
+      d3.select(this).attr('stroke', NAT.ink).attr('stroke-width', (scope === 'it' ? 2.5 : 1.5) / zk).raise();
+    })
+    .on('mouseleave', function () {
+      hideTip();
+      d3.select(this).attr('stroke', scope === 'it' ? NAT.ink : NAT.line).attr('stroke-width', 1 / zk);
+    });
+
+  // outline Italia sulla mappa mondo
+  if (scope === 'world') {
+    g.append('path').datum(italy).attr('d', path).attr('fill', NAT.ink)
+      .attr('stroke', NAT.ink).attr('stroke-width', 0.6).style('pointer-events', 'none');
+  }
+
+  const cities = places.filter(p => p.kind === 'city' && p.scope === scope);
+  const dots = root.append('g').attr('class', 'dots').selectAll('g').data(cities).join('g')
+    .attr('transform', d => {
+      const xy = projection([d.lon, d.lat]);
+      return xy ? 'translate(' + xy[0] + ',' + xy[1] + ')' : 'translate(-99,-99)';
+    })
+    .attr('data-city', d => d.name);
+
+  dots.append('circle')
+    .attr('r', scope === 'it' ? 5.5 : 4.5)
+    .attr('fill', d => d.wish ? NAT.bg : NAT.accent)
+    .attr('stroke', d => d.wish ? NAT.accent : NAT.bg)
+    .attr('stroke-width', 2)
+    .style('cursor', 'pointer')
+    .on('mousemove', (e, d) => showTip(e, d.name + ' \u00b7 ' + d.place + (d.wish ? ' \u00b7 da visitare' : d.year ? ' \u00b7 ' + d.year : '')))
+    .on('mouseleave', hideTip)
+    .on('click', (e, d) => { e.stopPropagation(); selectFeature(d.place); });
+
+  if (scope === 'it') {
+    const lab = root.append('g').attr('class', 'labels').style('pointer-events', 'none');
+    const boxes = [];
+    const pts = [];
+    cities.forEach(d => {
+      const xy = projection([d.lon, d.lat]);
+      if (!xy) return;
+      pts.push({ d: d, x: xy[0], y: xy[1] });
+      boxes.push([xy[0] - 7, xy[1] - 7, xy[0] + 7, xy[1] + 7]);
+    });
+    const hits = b => boxes.some(o => !(b[2] < o[0] || b[0] > o[2] || b[3] < o[1] || b[1] > o[3]));
+    pts.sort((a, b) => a.y - b.y).forEach(p => {
+      const wpx = p.d.name.length * 5.7 + 4;
+      const cands = [[9, 4], [-9 - wpx, 4], [9, -8], [-9 - wpx, -8], [-wpx / 2, -11], [-wpx / 2, 15],
+        [16, -16], [-16 - wpx, -16], [16, 18], [-16 - wpx, 18], [-wpx / 2, -22], [-wpx / 2, 26]];
+      for (let i = 0; i < cands.length; i++) {
+        const ox = cands[i][0], oy = cands[i][1];
+        const b = [p.x + ox, p.y + oy - 9, p.x + ox + wpx, p.y + oy + 3];
+        if (hits(b)) continue;
+        boxes.push(b);
+        lab.append('text').datum({ x: p.x, y: p.y, ox: ox, oy: oy })
+          .text(p.d.name)
+          .attr('x', p.x + ox).attr('y', p.y + oy)
+          .attr('font-family', 'Archivo, system-ui, sans-serif')
+          .attr('font-size', 11).attr('font-weight', 600)
+          .attr('fill', NAT.ink)
+          .attr('paint-order', 'stroke').attr('stroke', NAT.bg).attr('stroke-width', 3);
+        break;
+      }
+    });
+  }
+
+  // zoom e pan
+  zoomBehaviour = d3.zoom().scaleExtent([1, 24])
+    .translateExtent([[0, 0], [w, h]])
+    .on('zoom', ev => {
+      zk = ev.transform.k;
+      root.attr('transform', ev.transform);
+      g.selectAll('path').attr('stroke-width', 1 / zk);
+      root.selectAll('.dots circle').attr('r', baseR() / zk).attr('stroke-width', 2 / zk);
+      root.selectAll('.labels text')
+        .attr('font-size', 11 / zk)
+        .attr('x', d => d.x + d.ox / zk)
+        .attr('y', d => d.y + d.oy / zk)
+        .attr('stroke-width', 3 / zk);
+      hideTip();
+    });
+  svg.call(zoomBehaviour);
+  svg.call(zoomBehaviour.transform, d3.zoomIdentity);
+  zk = 1;
+}
+function baseR() { return scope === 'it' ? 5.5 : 4.5; }
+
+function showTip(e, text) {
+  const box = document.querySelector('.mapwrap').getBoundingClientRect();
+  tip.textContent = text;
+  tip.style.left = (e.clientX - box.left) + 'px';
+  tip.style.top = (e.clientY - box.top) + 'px';
+  tip.style.opacity = 1;
+}
+function hideTip() { tip.style.opacity = 0; }
+
+function highlight(name) {
+  svg.selectAll('path').attr('stroke-width', function () {
+    const n = this.getAttribute('data-name');
+    return ((name && n && norm(n) === norm(name)) ? 2 : 1) / zk;
+  }).attr('stroke', function () {
+    const n = this.getAttribute('data-name');
+    return (name && n && norm(n) === norm(name)) ? NAT.ink : (scope === 'it' ? NAT.ink : NAT.line);
+  });
+  svg.selectAll('g[data-city] circle').attr('r', function () {
+    const on = name && this.parentNode.getAttribute('data-city') === name;
+    return baseR() / zk * (on ? 1.7 : 1);
+  });
+}
+
+/* ---------- tab, reset, resize ---------- */
+document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => {
+  scope = t.dataset.scope;
+  document.querySelectorAll('.tab').forEach(x => x.setAttribute('aria-selected', String(x === t)));
+  pending = null; renderPending(); q.value = ''; resultsEl.hidden = true; selected = null;
+  render();
+}));
+document.getElementById('reset').addEventListener('click', () => {
+  if (!confirm('Rimuovere tutti i posti dall\u2019archivio?')) return;
+  places = []; save(); render();
+});
+let rt;
+window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(drawMap, 120); });
+document.getElementById('zin').addEventListener('click', () => zoomBehaviour && svg.transition().duration(220).call(zoomBehaviour.scaleBy, 1.6));
+document.getElementById('zout').addEventListener('click', () => zoomBehaviour && svg.transition().duration(220).call(zoomBehaviour.scaleBy, 1 / 1.6));
+document.getElementById('zreset').addEventListener('click', () => {
+  if (selected) { selected = null; render(); return; }
+  if (zoomBehaviour) svg.transition().duration(280).call(zoomBehaviour.transform, d3.zoomIdentity);
+});
+
+d3.json((window.__resources && window.__resources.regioniIt) || 'https://cdn.jsdelivr.net/gh/openpolis/geojson-italy@master/topojson/limits_IT_regions.topo.json')
+  .then(topo => {
+    const layer = topo.objects.regions || topo.objects[Object.keys(topo.objects)[0]];
+    regioni = topojson.feature(topo, layer);
+    if (scope === 'it') drawMap();
+  })
+  .catch(() => {});
+
+d3.json((window.__resources && window.__resources.worldAtlas) || 'https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-110m.json').then(topo => {
+  world = topo;
+  countries = topojson.feature(topo, topo.objects.countries);
+  italy = countries.features.find(f => f.properties.name === 'Italy');
+  render();
+});
+render();
+Drive.init();
+</script>
+
+
+</body></html>
